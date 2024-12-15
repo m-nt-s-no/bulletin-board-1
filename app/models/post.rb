@@ -12,5 +12,5 @@
 #
 class Post < ApplicationRecord
   belongs_to(:board)
-  scope :expired, -> { where(:expires_on < Time.current) }
+  scope :expired, -> { where(self.expires_on < Time.current) }
 end
