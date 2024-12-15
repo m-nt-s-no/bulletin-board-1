@@ -10,5 +10,5 @@
 class Board < ApplicationRecord
   has_many(:posts)
   has_many(:expired_posts, -> { expired }, class_name: "Post")
-  has_many(:active_posts, -> { !expired }, class_name: "Post")
+  has_many(:active_posts, -> { active }, class_name: "Post")
 end
