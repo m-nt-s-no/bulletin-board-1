@@ -12,9 +12,5 @@
 #
 class Post < ApplicationRecord
   belongs_to(:board)
-  scope :expired, -> { where(is_expired: true) }
-
-  def is_expired
-    return self.expires_on < Date.today
-  end
+  scope :expired, -> { where('expires_on < ?', Date.today) }
 end
