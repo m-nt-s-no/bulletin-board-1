@@ -12,6 +12,6 @@
 #
 class Post < ApplicationRecord
   belongs_to(:board)
-  scope :expired, -> { where('expires_on < ?', Date.today) }
-  scope :active, -> { where('expires_on >= ?', Date.today) }
+  scope :expired, -> { where('expires_on < ?', Date.today).order(expires_on: :desc) }
+  scope :active, -> { where('expires_on >= ?', Date.today).order(expires_on: :asc) }
 end

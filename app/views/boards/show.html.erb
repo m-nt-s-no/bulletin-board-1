@@ -49,13 +49,36 @@
         <th>Posted on</th>
         <th>Expires on</th>
       </tr>
+      <% @the_board.active_posts.each do |post| %>
       <tr>
-        <%= @the_board.active_posts.each do |post| %>
           <td><%= post.title %></td>
           <td><%= post.body %></td>
-          <td><%= post.posted_on %></td>
-          <td><%= post.expires_on %></td>
+          <td><%= post.created_at.strftime("%b, %d %Y") %></td>
+          <td><%= post.expires_on.strftime("%b, %d %Y") %></td>
       </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div>
+    <h2>Expired posts</h2>
+  </div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Posted on</th>
+        <th>Expires on</th>
+      </tr>
+      <% @the_board.expired_posts.each do |post| %>
+      <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= post.created_at.strftime("%b, %d %Y") %></td>
+          <td><%= post.expires_on.strftime("%b, %d %Y") %></td>
+      </tr>
+      <% end %>
     </table>
   </div>
 </div>
