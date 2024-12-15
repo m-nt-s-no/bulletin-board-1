@@ -11,6 +11,7 @@
 #  board_id   :integer
 #
 class Post < ApplicationRecord
+  validates(:body, { :presence => true })
   belongs_to(:board)
   scope :expired, -> { where('expires_on < ?', Date.today).order(expires_on: :desc) }
   scope :active, -> { where('expires_on >= ?', Date.today).order(expires_on: :asc) }
